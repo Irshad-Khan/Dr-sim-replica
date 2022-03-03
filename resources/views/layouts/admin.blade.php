@@ -30,6 +30,25 @@
 
     @include('layouts.dashboard_partials.footer_script')
 
+    @yield('script')
+
+    <script>
+        $(document).ready(function(){
+            var success = '{{ Session::get('success') }}';
+            if(success){
+                $.toast({
+                    heading: 'Success!',
+                    text: success,
+                    position: 'top-right',
+                    loaderBg:'#fec107',
+                    icon: 'success',
+                    hideAfter: 3500,
+                    stack: 6
+		        });
+            }
+        });
+    </script>
+
 </body>
 
 </html>

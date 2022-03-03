@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -69,5 +69,72 @@
             </div>
         </div>
     </div>
+</div> --}}
+
+<div class="loginPage">
+  <div class="loginBg">
+    <img src="{{ asset('client/img/login.png') }}" alt="login" class="w-100">
+  </div>
+  <div class="container">
+    <div class="loginContent">
+      <ul  class="nav nav-pills" role="tablist">
+        <li class="nav-item"><a class="nav-link active" href="#login" data-toggle="tab" role="tab">Login</a></li>
+        <li class="nav-item"><a href="#signup" class="nav-link" data-toggle="tab" role="tab">Signup</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="login">
+          <form>
+            <div class="input-group mb-4">
+              <input type="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="input-group mb-4">
+              <input type="password" class="form-control" placeholder="Password">
+            </div>
+            <a href="#">
+              Forgot your password?
+            </a>
+            <button class="btn btn-primary w-100 b-radius-100 mt-4">Login</button>
+          </form>
+          <div class="or">
+            Or
+          </div>
+          <div class="row">
+            <div class="col-6 text-center">
+              <a href="#"><img src="{{ asset('client/img/facebook.png') }}" alt="fb" class="img-fluid"></a>
+            </div>
+            <div class="col-6 text-center">
+              <a href="#"><img src="{{ asset('client/img/google.png') }}" alt="google" class="img-fluid"></a>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="signup">
+          <form>
+            <div class="input-group mb-4">
+              <input type="text" placeholder="Full Name" class="form-control">
+            </div>
+            <div class="input-group mb-4">
+              <input type="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="input-group mb-4">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button class="btn btn-primary w-100 b-radius-100 mt-4">Signup</button>
+          </form>
+          <div class="or">
+            Or
+          </div>
+          <div class="row">
+            <div class="col-6 text-center">
+              <a href="#"><img src="{{ asset('client/img/facebook.png') }}" alt="fb" class="img-fluid"></a>
+            </div>
+            <div class="col-6 text-center">
+              <a href="#"><img src="{{ asset('client/img/google.png') }}" alt="google" class="img-fluid"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 @endsection

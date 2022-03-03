@@ -268,7 +268,7 @@
 						<a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="{{Auth::guard('admin')->user()->image ? asset('profile'.Auth::guard('admin')->user()->image) : asset('dist/img/user1.png')}}" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
 						<ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
 							<li>
-								<a href="profile.html"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
+								<a href="{{ route('admin.profile') }}"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
 							</li>
 							<li>
 								<a href="#"><i class="zmdi zmdi-card"></i><span>my balance</span></a>
