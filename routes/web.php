@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Dashboard\Auth\AuthController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Localization\LocalizationController;
 use App\Http\Controllers\User\MainController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,13 +19,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [MainController::class, 'index'])->name('main.index');
-
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::group(['middleware' => ['auth']], function () {
-    //
+// Route::get('/', [MainController::class, 'index'])->name('main.index');
+Route::get('/', function () {
+    return redirect(session()->get('locale') ? session()->get('locale') : app()->getLocale());
 });
+Route::get('language/change', [LocalizationController::class, 'changeLanguage'])
+    ->name('changeLang');
+Route::group(
+    [
+        'prefix' => '{locale}',
+        'where' => ['locale' => '[a-zA-Z]{2}'],
+        'middleware' => 'setlocale'
+    ],
+    function () {
+
+        Route::get('/', [MainController::class, 'index'])->name('main.index');
+        Auth::routes();
+        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        Route::group(['middleware' => ['auth']], function () {
+            //
+        });
+    }
+);
+
 
 
 //Dshboard Route

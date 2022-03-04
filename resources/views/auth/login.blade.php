@@ -78,25 +78,25 @@
   <div class="container">
     <div class="loginContent">
       <ul  class="nav nav-pills" role="tablist">
-        <li class="nav-item"><a class="nav-link active" href="#login" data-toggle="tab" role="tab">Login</a></li>
-        <li class="nav-item"><a href="#signup" class="nav-link" data-toggle="tab" role="tab">Signup</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#login" data-toggle="tab" role="tab">{{ __('landing_page.login.login') }}</a></li>
+        <li class="nav-item"><a href="#signup" class="nav-link" data-toggle="tab" role="tab">{{ __('landing_page.signup.signup') }}</a></li>
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="login">
           <form>
             <div class="input-group mb-4">
-              <input type="email" class="form-control" placeholder="Email">
+              <input type="email" class="form-control" placeholder="{{ __('landing_page.login.email') }}">
             </div>
             <div class="input-group mb-4">
-              <input type="password" class="form-control" placeholder="Password">
+              <input type="password" class="form-control" placeholder="{{ __('landing_page.login.password') }}">
             </div>
             <a href="#">
-              Forgot your password?
+              {{ __('landing_page.login.forgot_password') }}
             </a>
-            <button class="btn btn-primary w-100 b-radius-100 mt-4">Login</button>
+            <button class="btn btn-primary w-100 b-radius-100 mt-4">{{ __('landing_page.login.login') }}</button>
           </form>
           <div class="or">
-            Or
+            {{ __('landing_page.login.or') }}
           </div>
           <div class="row">
             <div class="col-6 text-center">
@@ -110,18 +110,18 @@
         <div class="tab-pane" id="signup">
           <form>
             <div class="input-group mb-4">
-              <input type="text" placeholder="Full Name" class="form-control">
+              <input type="text" placeholder="{{ __('landing_page.signup.full_name') }}" class="form-control">
             </div>
             <div class="input-group mb-4">
-              <input type="email" class="form-control" placeholder="Email">
+              <input type="email" class="form-control" placeholder="{{ __('landing_page.signup.email') }}">
             </div>
             <div class="input-group mb-4">
-              <input type="password" placeholder="Password" class="form-control">
+              <input type="password" placeholder="{{ __('landing_page.signup.password') }}" class="form-control">
             </div>
-            <button class="btn btn-primary w-100 b-radius-100 mt-4">Signup</button>
+            <button class="btn btn-primary w-100 b-radius-100 mt-4">{{ __('landing_page.signup.signup') }}</button>
           </form>
           <div class="or">
-            Or
+            {{ __('landing_page.signup.or') }}
           </div>
           <div class="row">
             <div class="col-6 text-center">

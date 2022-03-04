@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-        <section class="bannerHolder">
+<section class="bannerHolder">
   <section class="bannerSection">
     <section class="container">
       <section class="bannerSec">

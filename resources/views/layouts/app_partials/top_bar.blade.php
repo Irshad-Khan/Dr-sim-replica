@@ -1,7 +1,7 @@
 <header class="position-absolute w-100">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="{{ route('main.index') }}">
+      <a class="navbar-brand" href="{{ route('main.index', ['locale' => app()->getLocale()]) }}">
         <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="20" cy="20" r="17" stroke="#2EA6DE" stroke-width="6"/>
           <circle cx="40" cy="20" r="17" stroke="#2EA6DE" stroke-width="6"/>
@@ -14,25 +14,27 @@
         </button>
         <ul class="navbar-nav me-auto ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{{ route('main.index') }}">Home</a>
+            <a class="nav-link"
+                aria-current="page"
+                href="{{ route('main.index', ['locale' => app()->getLocale()]) }}">{{ __('landing_page.topbar.home') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./unlock.php">Unlock</a>
+            <a class="nav-link" href="./unlock.php">{{ __('landing_page.topbar.unlock') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./about.php">About Us</a>
+            <a class="nav-link" href="./about.php">{{ __('landing_page.topbar.about_us') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./contact.php">Contact Us</a>
+            <a class="nav-link" href="./contact.php">{{ __('landing_page.topbar.contact_us') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">More</a>
+            <a class="nav-link" href="#">{{ __('landing_page.topbar.more') }}</a>
           </li>
         </ul>
       </div>
       <div class="btnNav">
-        <a href="./d-index.php" class="btn  btn-outline-primary rounded me-2 d-flex align-items-center">Track Order</a>
-        <a href="{{ route('login') }}">
+        <a href="./d-index.php" class="btn  btn-outline-primary rounded me-2 d-flex align-items-center">{{ trans('landing_page.topbar.track_order') }}</a>
+        <a href="{{ route('login', ['locale' => app()->getLocale()]) }}">
           <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_d_101_2)">
             <rect width="46" height="46" rx="23" transform="matrix(-1 0 0 1 50 0)" fill="white"/>
@@ -72,6 +74,12 @@
             </defs>
           </svg>
         </a>
+        <div style="margin-top: 5px !important">
+            <select class="form-control languageSelector">
+            <option {{ session()->get('locale') == 'en' ? 'selected' : '' }} value="en">🇺🇸 <span style="font-weight: bolder !important">En</span></option>
+            <option {{ session()->get('locale') == 'fr' ? 'selected' : '' }} value="fr">🇫🇷 <span style="font-weight: bolder !important">Fr</span></option>
+        </select>
+        </div>
       </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

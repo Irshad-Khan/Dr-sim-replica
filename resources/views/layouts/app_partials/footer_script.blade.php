@@ -3,7 +3,7 @@
   <script src="{{ asset('client/js/plugins.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.8/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
   <script src="{{ asset('client/js/slick.min.js') }}"></script>
   <script src="{{ asset('client/js/main.js') }}"></script>
   <script>
