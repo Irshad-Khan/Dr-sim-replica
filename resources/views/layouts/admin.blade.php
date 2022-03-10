@@ -46,6 +46,23 @@
                     stack: 6
 		        });
             }
+
+
+             //Warning Message
+            $('.sa-warning').on('click',function(e){
+                swal({
+                    title: "Are you sure?",
+                    text: "You want to change status!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#fec107",
+                    confirmButtonText: "Yes, Change it!",
+                    closeOnConfirm: false
+                }, function(){
+                    {{--  return true;  --}}
+                });
+                return false;
+            });
         });
     </script>
 

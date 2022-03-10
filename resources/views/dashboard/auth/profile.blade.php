@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('title','Profile')
 @section('content')
 <!-- Row -->
 <div class="row">
@@ -63,10 +63,10 @@
                                                                                 name="first_name"
                                                                                 placeholder="willard"
                                                                                 value="{{ old('first_name', $admin->first_name) }}">
+                                                                            </div>
                                                                             @error('first_name')
                                                                                 <div class="error">{{ $message }}</div>
                                                                             @enderror
-                                                                        </div>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="control-label mb-10" for="last_name">Last Name <span class="text-danger">*</span></label>
@@ -78,10 +78,10 @@
                                                                                 name="last_name"
                                                                                 placeholder="bryant"
                                                                                 value="{{ old('last_name', $admin->last_name) }}">
+                                                                            </div>
                                                                             @error('last_name')
                                                                                 <div class="error">{{ $message }}</div>
                                                                             @enderror
-                                                                        </div>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="control-label mb-10" for="email">Email address <span class="text-danger">*</span></label>
@@ -93,10 +93,10 @@
                                                                                 name="email"
                                                                                 placeholder="xyz@gmail.com"
                                                                                 value="{{ old('email', $admin->email) }}">
+                                                                            </div>
                                                                             @error('email')
                                                                                 <div class="error">{{ $message }}</div>
                                                                             @enderror
-                                                                        </div>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="control-label mb-10" for="password">Password</label>
@@ -107,10 +107,10 @@
                                                                                  id="password"
                                                                                  placeholder="Enter password"
                                                                                  name="password">
-                                                                            @error('password')
-                                                                                <div class="error">{{ $message }}</div>
-                                                                            @enderror
-                                                                        </div>
+                                                                                </div>
+                                                                                @error('password')
+                                                                                    <div class="error">{{ $message }}</div>
+                                                                                @enderror
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-actions mt-10">

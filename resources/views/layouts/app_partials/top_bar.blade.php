@@ -14,18 +14,18 @@
         </button>
         <ul class="navbar-nav me-auto ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link"
+            <a class="nav-link {{ Route::currentRouteName() == "main.index" ? 'active' : '' }}"
                 aria-current="page"
                 href="{{ route('main.index', ['locale' => app()->getLocale()]) }}">{{ __('landing_page.topbar.home') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./unlock.php">{{ __('landing_page.topbar.unlock') }}</a>
+            <a class="nav-link" href="#">{{ __('landing_page.topbar.unlock') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./about.php">{{ __('landing_page.topbar.about_us') }}</a>
+            <a class="nav-link" href="#">{{ __('landing_page.topbar.about_us') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./contact.php">{{ __('landing_page.topbar.contact_us') }}</a>
+            <a class="nav-link" href="#">{{ __('landing_page.topbar.contact_us') }}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">{{ __('landing_page.topbar.more') }}</a>

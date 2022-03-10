@@ -3,9 +3,17 @@
 namespace App\Providers;
 
 use App\Contracts\Admin\Auth\AuthInterface;
+use App\Contracts\Admin\CountryInterface;
+use App\Contracts\Admin\CustomerInterface;
 use App\Contracts\Admin\DashboardInterface;
+use App\Contracts\Admin\MobileBrandInterface;
+use App\Contracts\Admin\NetworkProviderInterface;
 use App\Repositories\Admin\Auth\AuthRepository;
+use App\Repositories\Admin\CountryRepository;
+use App\Repositories\Admin\CustomerRepository;
 use App\Repositories\Admin\DashboardRepository;
+use App\Repositories\Admin\MobileBrandRepository;
+use App\Repositories\Admin\NetworkProviderRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -19,6 +27,10 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(DashboardInterface::class, DashboardRepository::class);
         $this->app->bind(AuthInterface::class, AuthRepository::class);
+        $this->app->bind(CustomerInterface::class, CustomerRepository::class);
+        $this->app->bind(CountryInterface::class, CountryRepository::class);
+        $this->app->bind(NetworkProviderInterface::class, NetworkProviderRepository::class);
+        $this->app->bind(MobileBrandInterface::class, MobileBrandRepository::class);
     }
 
     /**

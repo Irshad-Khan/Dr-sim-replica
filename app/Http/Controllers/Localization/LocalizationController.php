@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\App;
 
 class LocalizationController extends Controller
 {
+    /**
+     * Set language key like en,fr etc in app
+     */
     public function changeLanguage(Request $request)
     {
         App::setLocale($request->lang);
