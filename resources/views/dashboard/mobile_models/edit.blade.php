@@ -1,17 +1,17 @@
 @extends('layouts.admin')
 @section('title','Mobile Brand | Update')
 @section('content')
-<!-- Row -->
- <form action="{{ isset($mobileBrand) ? route('mobile-brands.update', ['mobile_brand' => $mobileBrand->id]) : route('mobile-brands.store') }}"
+<form action="{{ isset($mobileModel) ? route('mobile-models.update', ['mobile_model' => $mobileModel->id]) : route('mobile-models.store') }}"
       method="POST" enctype="multipart/form-data">
     @csrf
     @method('put')
+<!-- Row -->
 <div class="row">
     <div class="col-lg-3 col-xs-12">
         <div class="panel panel-default card-view  pa-0">
             <div class="panel-wrapper collapse in" style="padding-bottom: 63px !important">
                 <div class="panel-body  pa-0">
-                    @include('dashboard.mobile_brands._image')
+                    @include('dashboard.mobile_models._image')
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
                                                 <div class="panel-body pa-0">
                                                     <div class="col-sm-12 col-xs-12">
                                                         <div class="form-wrap">
-                                                            @include('dashboard.mobile_brands._form')
+                                                            @include('dashboard.mobile_models._form')
                                                         </div>
                                                     </div>
                                                 </div>
@@ -50,6 +50,15 @@
         </div>
     </div>
 </div>
- </form>
+</form>
 <!-- /Row -->
 @endsection
+
+@section('script')
+     @include('shared.image_upload._upload', [
+        'onChangeId' => 'mobile_brand_image',
+        'formId' => 'brand_image_form',
+        'errorPlacement' => 'brand_upload_error',
+        'url' => "/admin/mobile-brands/upload"
+    ])
+@stop

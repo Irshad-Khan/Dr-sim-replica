@@ -36,16 +36,27 @@
                         <div class="clearfix"></div>
                     </a>
 					<ul id="mobile_dropdown" class="collapse collapse-level-1 {{ Route::currentRouteName() === 'mobile-brands.index' ? 'in' : '' ||
-                        Route::currentRouteName() === 'mobile-brands.create' ? 'in' : '' ||
-                        Route::currentRouteName() === 'mobile-brands.edit' ? 'in' : '' }}">
+                                Route::currentRouteName() === 'mobile-brands.create' ? 'in' : '' ||
+                                Route::currentRouteName() === 'mobile-brands.edit' ? 'in' : '' ||
+                                Route::currentRouteName() === 'mobile-models.index' ? 'in' : '' ||
+                                Route::currentRouteName() === 'mobile-models.create' ? 'in' : '' ||
+                                Route::currentRouteName() === 'mobile-models.edit' ? 'in' : '' }}">
 						<li>
-							<a href="">Mobile Models</a>
+							<a class="{{ Route::currentRouteName() === 'mobile-models.index' ? 'active-page' : '' ||
+                                Route::currentRouteName() === 'mobile-models.create' ? 'active-page' : '' ||
+                                Route::currentRouteName() === 'mobile-models.edit' ? 'active-page' : '' }}"
+                                href="{{ route('mobile-models.index') }}">Mobile Models</a>
 						</li>
 						<li>
 							<a class="{{ Route::currentRouteName() === 'mobile-brands.index' ? 'active-page' : '' ||
                         Route::currentRouteName() === 'mobile-brands.create' ? 'active-page' : '' ||
                         Route::currentRouteName() === 'mobile-brands.edit' ? 'active-page' : '' }}"  href="{{ route('mobile-brands.index') }}">Mobile Brands</a>
 						</li>
+                         <li>
+                            <a href="Javascript:viod(0)">
+                                Brand FAQ
+                            </a>
+                        </li>
 					</ul>
 				</li>
                 <li>
@@ -71,6 +82,15 @@
                         <div class="clearfix"></div>
                     </a>
 				</li>
+                <li>
+					<a href="Javascript:viod(0)">
+                        <div class="pull-left">
+                            <i class="fa fa-truck mr-20"></i>
+                            <span class="right-nav-text">Services</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+				</li>
 
 				<li><hr class="light-grey-hr mb-10"/></li>
 				<li class="navigation-header">
@@ -78,7 +98,10 @@
 					<i class="zmdi zmdi-more"></i>
 				</li>
 				<li>
-					<a href="javascript:void(0);">
+					<a href="{{ route('countries.index') }}"
+                    class="{{ Route::currentRouteName() === 'countries.index' ? 'active' : '' ||
+                        Route::currentRouteName() === 'countries.create' ? 'active' : '' ||
+                        Route::currentRouteName() === 'countries.edit' ? 'active' : '' }}">
                         <div class="pull-left">
                             <i class="zmdi zmdi-smartphone-setup mr-20"></i>
                             <span class="right-nav-text">Countries</span>

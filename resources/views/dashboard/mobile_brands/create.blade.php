@@ -2,6 +2,9 @@
 @section('title','Mobile Brand | Create')
 @section('content')
 <!-- Row -->
+ <form action="{{ isset($mobileBrand) ? route('mobile-brands.update', ['mobile_brand' => $mobileBrand->id]) : route('mobile-brands.store') }}"
+      method="POST" enctype="multipart/form-data">
+    @csrf
 <div class="row">
     <div class="col-lg-3 col-xs-12">
         <div class="panel panel-default card-view  pa-0">
@@ -46,13 +49,7 @@
         </div>
     </div>
 </div>
+ </form>
 <!-- /Row -->
 @endsection
-@section('script')
-    @include('shared.image_upload._upload', [
-        'onChangeId' => 'mobile_brand_image',
-        'formId' => 'brand_image_form',
-        'errorPlacement' => 'brand_upload_error',
-        'url' => "/admin/mobile-brands/upload"
-    ])
-@stop
+

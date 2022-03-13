@@ -2,7 +2,7 @@
 
 namespace App\Contracts\Admin;
 
-interface MobileBrandInterface
+interface MobileModelInterface
 {
     public function index();
     public function create();

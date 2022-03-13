@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Mobile Brands')
+@section('title','Countries')
 @section('content')
 <!-- Row -->
 <div class="row">
@@ -7,11 +7,11 @@
         <div class="panel panel-default card-view">
             <div class="panel-heading">
                 <div class="pull-left">
-                    <h6 class="panel-title txt-dark">Mobile Brands</h6>
+                    <h6 class="panel-title txt-dark">Countries</h6>
                 </div>
-                <div class="pull-right">
-                    <a href="{{ route('mobile-brands.create') }}" class="btn btn-primary">Add New</a>
-                </div>
+                {{--  <div class="pull-right">
+                    <a href="{{ route('countries.create') }}" class="btn btn-primary">Add New</a>
+                </div>  --}}
 
                 <div class="clearfix"></div>
             </div>
@@ -26,8 +26,14 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Image</th>
-                                        <th>Title</th>
+                                        <th>emoji</th>
+                                        <th>Name</th>
+                                        <th>Capital</th>
+                                        <th>Currency</th>
+                                        <th>Region</th>
+                                        <th>Phone Code</th>
+                                        <th>Lat</th>
+                                        <th>Long</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -35,20 +41,34 @@
                                 <tfoot>
                                     <tr>
                                         <th>#</th>
-                                        <th>Image</th>
-                                        <th>Title</th>
+                                        <th>emoji</th>
+                                        <th>Name</th>
+                                        <th>Capital</th>
+                                        <th>Currency</th>
+                                        <th>Region</th>
+                                        <th>Phone Code</th>
+                                        <th>Lat</th>
+                                        <th>Long</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
-                                    @foreach($mobileBrands as $mobileBrand)
+                                    @foreach($countries as $country)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td><img width="64" src="{{ $mobileBrand->image ? asset('mobile_brands/'.$mobileBrand->image) : asset('images/default.jpg') }}" alt="bran image"></td>
-                                            <td>{{ $mobileBrand->title }}</td>
+                                            <td>{{ $country->emoji }}</td>
+                                            <td>{{ $country->name }}</td>
+                                            <td>{{ $country->capital }}</td>
+                                            <td>{{ $country->currency_name }}
+                                                <span style="font-weight: bolder;">({{ $country->currency }} {{ $country->currency_symbol }})</span>
+                                            </td>
+                                            <td>{{ $country->region }}</td>
+                                            <td>{{ $country->phone_code }}</td>
+                                            <td>{{ number_format($country->latitude, 2)}}</td>
+                                            <td>{{ number_format($country->longitude, 2) }}</td>
                                             <td>
-                                                @if($mobileBrand->status == App\Models\MobileBrand::ACTIVE)
+                                                @if($country->status == App\Models\Country::ACTIVE)
                                                     <span class="label label-success capitalize-font inline-block ml-10">
                                                         Active
                                                     </span>
@@ -62,13 +82,13 @@
                                                 <div class="pull-left inline-block dropdown">
                                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="fa fa-ellipsis-h"></i></a>
                                                     <ul class="dropdown-menu bullet dropdown-menu-right" role="menu">
-                                                        <li role="presentation">
-                                                            <a href="{{ route('mobile-brands.edit' ,['mobile_brand' => $mobileBrand->id]) }}" role="menuitem">
+                                                        {{--  <li role="presentation">
+                                                            <a href="{{ route('countries.edit' ,['country' => $country->id]) }}" role="menuitem">
                                                                 <i class="icon wb-reply" aria-hidden="false"></i>Edit
                                                             </a>
-                                                        </li>
+                                                        </li>  --}}
                                                         <li role="presentation">
-                                                            <a href="{{ route('mobile-brands.change.status', ['status' => $mobileBrand->status, 'id' => $mobileBrand->id]) }}" onclick="return confirm('Are you sure?')" role="menuitem">
+                                                            <a href="{{ route('countries.change.status', ['status' => $country->status, 'id' => $country->id]) }}" onclick="return confirm('Are you sure?')" role="menuitem">
                                                                 <i class="icon wb-share" aria-hidden="true"></i>Change Status
                                                             </a>
                                                         </li>

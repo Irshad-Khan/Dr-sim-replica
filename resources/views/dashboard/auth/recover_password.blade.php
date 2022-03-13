@@ -1,5 +1,6 @@
 @extends('layouts.admin_auth')
 
+@section('title','Password Reset')
 @section('admin_auth_content')
 <!-- Row -->
 <div class="table-struct full-width full-height">

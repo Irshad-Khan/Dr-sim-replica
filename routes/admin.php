@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Dashboard\Auth\AuthController;
+use App\Http\Controllers\Dashboard\CountryController;
 use App\Http\Controllers\Dashboard\CustomerController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\MobileBrandController;
+use App\Http\Controllers\Dashboard\MobileModelController;
 use App\Http\Controllers\Dashboard\NetworkProviderController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,4 +34,14 @@ Route::middleware(['admin.auth'])->group(function () {
         ->name('mobile-brands.change.status');
     Route::post('mobile-brands/upload', [MobileBrandController::class, 'upload'])
         ->name('mobile-brand.upload');
+
+    Route::resource('mobile-models', MobileModelController::class);
+    Route::get('mobile-models/change/status/{status}/{id}', [MobileModelController::class, 'toggleStatus'])
+        ->name('mobile-models.change.status');
+    Route::post('mobile-models/upload', [MobileModelController::class, 'upload'])
+        ->name('mobile-models.upload');
+
+    Route::resource('countries', CountryController::class)->only('index');
+    Route::get('countries/change/status/{status}/{id}', [CountryController::class, 'toggleStatus'])
+        ->name('countries.change.status');
 });

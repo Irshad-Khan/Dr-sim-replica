@@ -9,7 +9,9 @@ class MobileBrandRepository implements MobileBrandInterface
 {
     public function index()
     {
-        return MobileBrand::latest()->get();
+        return MobileBrand::withoutGlobalScope('active')
+            ->latest()
+            ->get();
     }
 
     public function create()
@@ -19,12 +21,17 @@ class MobileBrandRepository implements MobileBrandInterface
 
     public function store($request)
     {
-        MobileBrand::create($request->except('_token'));
+        $data = $request->except(['_token']);
+        $imageName = time() . '.' . $request->image->extension();
+        $request->image->move(public_path('mobile_brands'), $imageName);
+        $data['image'] = $imageName;
+
+        MobileBrand::create($data);
     }
 
     public function edit($id)
     {
-        $mobileBrand = MobileBrand::findOrFail($id);
+        $mobileBrand = MobileBrand::withoutGlobalScope('active')->findOrFail($id);
         if (!$mobileBrand) {
             abort(404);
         }
@@ -34,17 +41,22 @@ class MobileBrandRepository implements MobileBrandInterface
 
     public function update($request, $id)
     {
-        $mobileBrand = MobileBrand::findOrFail($id);
+        $mobileBrand = MobileBrand::withoutGlobalScope('active')->findOrFail($id);
         if (!$mobileBrand) {
             abort(404);
         }
-
-        $mobileBrand->update($request->except(['_token', '_method']));
+        if ($request->has('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('mobile_brands'), $imageName);
+            $mobileBrand->image = $imageName;
+            $mobileBrand->save();
+        }
+        $mobileBrand->update($request->except(['_token', '_method', 'image']));
     }
 
     public function toggleStatus($status, $id)
     {
-        $mobileBrand = MobileBrand::findOrFail($id);
+        $mobileBrand = MobileBrand::withoutGlobalScope('active')->findOrFail($id);
         if (!$mobileBrand) {
             abort(404);
         }
@@ -52,10 +64,5 @@ class MobileBrandRepository implements MobileBrandInterface
         $mobileBrand->update([
             'status' => !$status
         ]);
-    }
-
-    public function upload($request)
-    {
-        dd($request->all()); // TODO
     }
 }

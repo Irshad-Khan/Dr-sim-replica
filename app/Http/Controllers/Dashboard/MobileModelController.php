@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Contracts\Admin\MobileBrandInterface;
+use App\Contracts\Admin\MobileModelInterface;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MobileBrandImageUploadRequest;
-use App\Http\Requests\MobileBrandRequest;
-use Illuminate\Http\Request;
+use App\Http\Requests\MobileModelRequest;
+use App\Http\Requests\UploadImageRequst;
 
-class MobileBrandController extends Controller
+class MobileModelController extends Controller
 {
-    protected $mobileBrandInterface;
-    public function __construct(MobileBrandInterface $mobileBrandInterface)
+    protected $mobileModelInterface;
+    public function __construct(MobileModelInterface $mobileModelInterface)
     {
-        $this->mobileBrandInterface = $mobileBrandInterface;
+        $this->mobileModelInterface = $mobileModelInterface;
     }
 
     /**
@@ -23,8 +22,8 @@ class MobileBrandController extends Controller
      */
     public function index()
     {
-        return view('dashboard.mobile_brands.index', [
-            'mobileBrands' => $this->mobileBrandInterface->index()
+        return view('dashboard.mobile_models.index', [
+            'mobileModels' => $this->mobileModelInterface->index()
         ]);
     }
 
@@ -35,7 +34,9 @@ class MobileBrandController extends Controller
      */
     public function create()
     {
-        return view('dashboard.mobile_brands.create');
+        return view('dashboard.mobile_models.create', [
+            'mobileBrands' => $this->mobileModelInterface->create()
+        ]);
     }
 
     /**
@@ -44,11 +45,11 @@ class MobileBrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MobileBrandRequest $request)
+    public function store(MobileModelRequest $request)
     {
-        $this->mobileBrandInterface->store($request);
-        return redirect()->route('mobile-brands.index')
-            ->with('success', 'Mobile Brand Added Successfully!');
+        $this->mobileModelInterface->store($request);
+        return redirect()->route('mobile-models.index')
+            ->with('success', 'Mobile Model Added Successfully!');
     }
 
     /**
@@ -71,9 +72,10 @@ class MobileBrandController extends Controller
     public function edit($id)
     {
         return view(
-            'dashboard.mobile_brands.edit',
+            'dashboard.mobile_models.edit',
             [
-                'mobileBrand' => $this->mobileBrandInterface->edit($id)
+                'mobileModel' => $this->mobileModelInterface->edit($id),
+                'mobileBrands' => $this->mobileModelInterface->create()
             ]
         );
     }
@@ -85,10 +87,10 @@ class MobileBrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(MobileBrandRequest $request, $id)
+    public function update(MobileModelRequest $request, $id)
     {
-        $this->mobileBrandInterface->update($request, $id);
-        return redirect()->route('mobile-brands.index')->with('success', 'Mobile Brand Update Successfully!');
+        $this->mobileModelInterface->update($request, $id);
+        return redirect()->route('mobile-models.index')->with('success', 'Mobile Model Update Successfully!');
     }
 
     /**
@@ -99,7 +101,7 @@ class MobileBrandController extends Controller
      */
     public function toggleStatus($status, $id)
     {
-        $this->mobileBrandInterface->toggleStatus($status, $id);
-        return redirect()->back()->with('success', 'Mobile Brand update Successfully!');
+        $this->mobileModelInterface->toggleStatus($status, $id);
+        return redirect()->back()->with('success', 'Mobile Model update Successfully!');
     }
 }

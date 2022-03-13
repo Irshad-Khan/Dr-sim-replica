@@ -7,10 +7,10 @@
         <div class="panel panel-default card-view">
             <div class="panel-heading">
                 <div class="pull-left">
-                    <h6 class="panel-title txt-dark">Mobile Brands</h6>
+                    <h6 class="panel-title txt-dark">Mobile Models</h6>
                 </div>
                 <div class="pull-right">
-                    <a href="{{ route('mobile-brands.create') }}" class="btn btn-primary">Add New</a>
+                    <a href="{{ route('mobile-models.create') }}" class="btn btn-primary">Add New</a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -28,6 +28,7 @@
                                         <th>#</th>
                                         <th>Image</th>
                                         <th>Title</th>
+                                        <th>Mobile Brand</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -37,18 +38,20 @@
                                         <th>#</th>
                                         <th>Image</th>
                                         <th>Title</th>
+                                        <th>Mobile Brand</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
-                                    @foreach($mobileBrands as $mobileBrand)
+                                    @foreach($mobileModels as $mobileModel)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td><img width="64" src="{{ $mobileBrand->image ? asset('mobile_brands/'.$mobileBrand->image) : asset('images/default.jpg') }}" alt="bran image"></td>
-                                            <td>{{ $mobileBrand->title }}</td>
+                                            <td><img width="64" src="{{ $mobileModel->image ? asset('mobile_models/'.$mobileModel->image) : asset('images/default.jpg') }}" alt="bran image"></td>
+                                            <td>{{ $mobileModel->name }}</td>
+                                            <td>{{ optional($mobileModel->brand)->title }}</td>
                                             <td>
-                                                @if($mobileBrand->status == App\Models\MobileBrand::ACTIVE)
+                                                @if($mobileModel->status == App\Models\MobileModel::ACTIVE)
                                                     <span class="label label-success capitalize-font inline-block ml-10">
                                                         Active
                                                     </span>
@@ -63,12 +66,12 @@
                                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="fa fa-ellipsis-h"></i></a>
                                                     <ul class="dropdown-menu bullet dropdown-menu-right" role="menu">
                                                         <li role="presentation">
-                                                            <a href="{{ route('mobile-brands.edit' ,['mobile_brand' => $mobileBrand->id]) }}" role="menuitem">
+                                                            <a href="{{ route('mobile-models.edit' ,['mobile_model' => $mobileModel->id]) }}" role="menuitem">
                                                                 <i class="icon wb-reply" aria-hidden="false"></i>Edit
                                                             </a>
                                                         </li>
                                                         <li role="presentation">
-                                                            <a href="{{ route('mobile-brands.change.status', ['status' => $mobileBrand->status, 'id' => $mobileBrand->id]) }}" onclick="return confirm('Are you sure?')" role="menuitem">
+                                                            <a href="{{ route('mobile-models.change.status', ['status' => $mobileModel->status, 'id' => $mobileModel->id]) }}" onclick="return confirm('Are you sure?')" role="menuitem">
                                                                 <i class="icon wb-share" aria-hidden="true"></i>Change Status
                                                             </a>
                                                         </li>
