@@ -36,7 +36,6 @@
         $(document).ready(function(){
             var success = '{{ Session::get('success') }}';
             if(success){
-                debugger
                 $.toast({
                     heading: 'Success!',
                     text: success,
