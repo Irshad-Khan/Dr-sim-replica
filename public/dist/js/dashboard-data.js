@@ -281,8 +281,8 @@ $(document).ready(function() {
             lineChart.setData(data);
             lineChart.redraw();
         } else {
-            lineChart.setData(dataNew);
-            lineChart.redraw();
+            // lineChart.setData(dataNew);
+            // lineChart.redraw();
         }
     }
     swichMorris();
