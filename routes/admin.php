@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\Auth\AuthController;
+use App\Http\Controllers\Dashboard\BrandFaqController;
 use App\Http\Controllers\Dashboard\CountryController;
 use App\Http\Controllers\Dashboard\CustomerController;
 use App\Http\Controllers\Dashboard\DashboardController;
@@ -49,4 +50,8 @@ Route::middleware(['admin.auth'])->group(function () {
     Route::resource('services', ServiceController::class);
     Route::get('services/{status}/{id}', [ServiceController::class, 'toggleStatus'])
         ->name('services.change.status');
+
+    Route::resource('brand-faqs', BrandFaqController::class);
+    Route::get('brand-faqs/{status}/{id}', [BrandFaqController::class, 'toggleStatus'])
+        ->name('brand-faqs.change.status');
 });

@@ -40,7 +40,10 @@
                                 Route::currentRouteName() === 'mobile-brands.edit' ? 'in' : '' ||
                                 Route::currentRouteName() === 'mobile-models.index' ? 'in' : '' ||
                                 Route::currentRouteName() === 'mobile-models.create' ? 'in' : '' ||
-                                Route::currentRouteName() === 'mobile-models.edit' ? 'in' : '' }}">
+                                Route::currentRouteName() === 'mobile-models.edit' ? 'in' : '' ||
+                                Route::currentRouteName() === 'brand-faqs.index' ? 'in' : '' ||
+                                Route::currentRouteName() === 'brand-faqs.create' ? 'in' : '' ||
+                                Route::currentRouteName() === 'brand-faqs.edit' ? 'in' : ''}}">
 						<li>
 							<a class="{{ Route::currentRouteName() === 'mobile-models.index' ? 'active-page' : '' ||
                                 Route::currentRouteName() === 'mobile-models.create' ? 'active-page' : '' ||
@@ -49,11 +52,14 @@
 						</li>
 						<li>
 							<a class="{{ Route::currentRouteName() === 'mobile-brands.index' ? 'active-page' : '' ||
-                        Route::currentRouteName() === 'mobile-brands.create' ? 'active-page' : '' ||
-                        Route::currentRouteName() === 'mobile-brands.edit' ? 'active-page' : '' }}"  href="{{ route('mobile-brands.index') }}">Mobile Brands</a>
+                                Route::currentRouteName() === 'mobile-brands.create' ? 'active-page' : '' ||
+                                Route::currentRouteName() === 'mobile-brands.edit' ? 'active-page' : '' }}"  href="{{ route('mobile-brands.index') }}">Mobile Brands</a>
 						</li>
                          <li>
-                            <a href="Javascript:viod(0)">
+                            <a class="{{ Route::currentRouteName() === 'brand-faqs.index' ? 'active-page' : '' ||
+                                Route::currentRouteName() === 'brand-faqs.create' ? 'active-page' : '' ||
+                                Route::currentRouteName() === 'brand-faqs.edit' ? 'active-page' : '' }}"
+                             href="{{ route('brand-faqs.index') }}">
                                 Brand FAQ
                             </a>
                         </li>

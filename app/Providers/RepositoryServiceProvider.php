@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Contracts\Admin\Auth\AuthInterface;
+use App\Contracts\Admin\BrandFaqInterface;
 use App\Contracts\Admin\CountryInterface;
 use App\Contracts\Admin\CustomerInterface;
 use App\Contracts\Admin\DashboardInterface;
@@ -11,6 +12,7 @@ use App\Contracts\Admin\MobileModelInterface;
 use App\Contracts\Admin\NetworkProviderInterface;
 use App\Contracts\Admin\ServiceInterface;
 use App\Repositories\Admin\Auth\AuthRepository;
+use App\Repositories\Admin\BrandFaqRepository;
 use App\Repositories\Admin\CountryRepository;
 use App\Repositories\Admin\CustomerRepository;
 use App\Repositories\Admin\DashboardRepository;
@@ -37,6 +39,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(MobileBrandInterface::class, MobileBrandRepository::class);
         $this->app->bind(MobileModelInterface::class, MobileModelRepository::class);
         $this->app->bind(ServiceInterface::class, ServiceRepository::class);
+        $this->app->bind(BrandFaqInterface::class, BrandFaqRepository::class);
     }
 
     /**
