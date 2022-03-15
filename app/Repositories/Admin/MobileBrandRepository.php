@@ -22,9 +22,11 @@ class MobileBrandRepository implements MobileBrandInterface
     public function store($request)
     {
         $data = $request->except(['_token']);
-        $imageName = time() . '.' . $request->image->extension();
-        $request->image->move(public_path('mobile_brands'), $imageName);
-        $data['image'] = $imageName;
+        if ($request->has('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('mobile_brands'), $imageName);
+            $data['image'] = $imageName;
+        }
 
         MobileBrand::create($data);
     }

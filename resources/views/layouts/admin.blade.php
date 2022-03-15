@@ -63,6 +63,10 @@
                 });
                 return false;
             });
+
+            $('.summernote').summernote({
+                height: 300,
+            });
         });
     </script>
 

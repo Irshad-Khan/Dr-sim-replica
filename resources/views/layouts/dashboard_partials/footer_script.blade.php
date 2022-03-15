@@ -46,6 +46,10 @@
 <!-- Switchery JavaScript -->
 <script src="{{ asset('vendors/bower_components/switchery/dist/switchery.min.js') }}"></script>
 
+<!-- Summernote Plugin JavaScript -->
+<script src="{{ asset('vendors/bower_components/summernote/dist/summernote.min.js') }}"></script>
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('ckeditor/editor_ckeditor_default.js') }}"></script>
 <!-- Init JavaScript -->
 <script src="{{ asset('dist/js/init.js') }}"></script>
 <script src="{{ asset('dist/js/dashboard-data.js') }}"></script>

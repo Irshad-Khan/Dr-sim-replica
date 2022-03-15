@@ -83,7 +83,10 @@
                     </a>
 				</li>
                 <li>
-					<a href="Javascript:viod(0)">
+					<a class="{{ Route::currentRouteName() === 'services.index' ? 'active' : '' ||
+                        Route::currentRouteName() === 'services.create' ? 'active' : '' ||
+                        Route::currentRouteName() === 'services.edit' ? 'active' : '' }}"
+                         href="{{ route('services.index') }}">
                         <div class="pull-left">
                             <i class="fa fa-truck mr-20"></i>
                             <span class="right-nav-text">Services</span>

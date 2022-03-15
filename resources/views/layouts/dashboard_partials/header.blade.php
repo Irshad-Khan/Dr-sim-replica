@@ -16,7 +16,7 @@
 	<link href="{{ asset('vendors/bower_components/datatables/media/css/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css"/>
 
 	<link href="{{ asset('vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css') }}" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="{{ asset('vendors/bower_components/summernote/dist/summernote.css') }}" />
 
 	<!-- Custom CSS -->
 	<link href="{{ asset('dist/css/style.css') }}" rel="stylesheet" type="text/css">

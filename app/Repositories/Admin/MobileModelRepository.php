@@ -21,9 +21,11 @@ class MobileModelRepository implements MobileModelInterface
     public function store($request)
     {
         $data = $request->except(['_token']);
-        $imageName = time() . '.' . $request->image->extension();
-        $request->image->move(public_path('mobile_models'), $imageName);
-        $data['image'] = $imageName;
+        if ($request->has('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('mobile_models'), $imageName);
+            $data['image'] = $imageName;
+        }
 
         MobileModel::create($data);
     }

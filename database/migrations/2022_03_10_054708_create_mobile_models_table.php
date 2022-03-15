@@ -16,7 +16,7 @@ class CreateMobileModelsTable extends Migration
         Schema::create('mobile_models', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->unsignedBigInteger('brand_id');
             $table->foreign('brand_id')

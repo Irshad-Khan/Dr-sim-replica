@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\MobileBrandController;
 use App\Http\Controllers\Dashboard\MobileModelController;
 use App\Http\Controllers\Dashboard\NetworkProviderController;
+use App\Http\Controllers\Dashboard\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -44,4 +45,8 @@ Route::middleware(['admin.auth'])->group(function () {
     Route::resource('countries', CountryController::class)->only('index');
     Route::get('countries/change/status/{status}/{id}', [CountryController::class, 'toggleStatus'])
         ->name('countries.change.status');
+
+    Route::resource('services', ServiceController::class);
+    Route::get('services/{status}/{id}', [ServiceController::class, 'toggleStatus'])
+        ->name('services.change.status');
 });
